@@ -143,6 +143,25 @@ html.menu-open .menu__side { opacity: 1; transform: none; transition-delay: 0.5s
 .meraki__sign { margin-top: clamp(28px, 3vw, 40px); font: 400 clamp(1.1rem, 1.4vw, 1.35rem)/1.4 var(--font-display); font-style: italic; color: var(--color-ink-2); }
 .meraki__rings { left: 50%; top: 50%; width: min(120vw, 1100px); height: min(120vw, 1100px); translate: -50% -50%; opacity: 0.35; }
 
+/* ---------- Ramas de flores rosas (como las del rótulo de la fachada) ---------- */
+.flor { position: absolute; z-index: 0; height: auto; overflow: visible; pointer-events: none; transform-origin: 0 0; }
+.flor--tl { left: 0; top: 0; width: clamp(230px, 34vw, 580px); }
+.flor--br { right: 0; bottom: 0; width: clamp(200px, 30vw, 520px); transform: rotate(180deg); transform-origin: center; }
+.flor--hero { left: 0; bottom: 0; width: clamp(220px, 34vw, 520px); transform: scaleY(-1); transform-origin: center; filter: drop-shadow(0 10px 24px rgb(0 0 0 / 0.35)); }
+/* Junto a un círculo (mapa de Visítanos, fotos de la tienda): sale de abajo a la izquierda y lo abraza */
+.flor--disc { left: -10%; bottom: -6%; z-index: 2; width: 62%; transform: scaleY(-1); transform-origin: center; filter: drop-shadow(0 8px 16px rgb(0 0 0 / 0.12)); }
+/* Footer: esquina superior derecha, como en el rótulo */
+.flor--foot { right: 0; top: 0; width: clamp(170px, 18vw, 280px); transform: scaleX(-1); transform-origin: center; }
+.foot__in { position: relative; z-index: 1; }
+@media (prefers-reduced-motion: no-preference) {
+  .flor use { transform-origin: 0 0; animation: sway 9s ease-in-out infinite alternate; }
+  .flor--br use { animation-delay: -4s; }
+  .flor--hero use { animation-delay: -2s; }
+  .flor--disc use { animation-delay: -6s; }
+  .flor--foot use { animation-delay: -3s; }
+}
+@keyframes sway { from { transform: rotate(-1.2deg); } to { transform: rotate(1.4deg); } }
+
 /* ---------- El local ---------- */
 .local { padding-block: var(--sec); background: var(--color-paper); }
 .local__p + .local__p { margin-top: 18px; }
@@ -395,6 +414,10 @@ html.menu-open .menu__side { opacity: 1; transform: none; transition-delay: 0.5s
   .tab__disc { width: 76px; height: 76px; }
   .js .tabs { margin-inline: calc(var(--pad) * -1); padding-inline: var(--pad); justify-content: flex-start; }
   .mesa__ctrl { display: none; }
+  .meraki { padding-block: 160px; }
+  .flor--tl { width: 200px; }
+  .flor--br { width: 180px; }
+  .flor--hero { width: 200px; }
   .mesa { padding-top: 80px; }
   .c3d { --w: min(60vw, 250px); margin-top: 28px; }
   .js .c3d { perspective: 1000px; height: calc(var(--w) * 1.33 + 60px); }
