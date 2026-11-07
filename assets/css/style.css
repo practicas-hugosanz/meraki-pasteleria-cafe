@@ -395,6 +395,10 @@ html.menu-open .menu__side { opacity: 1; transform: none; transition-delay: 0.5s
   .tab__disc { width: 76px; height: 76px; }
   .js .tabs { margin-inline: calc(var(--pad) * -1); padding-inline: var(--pad); justify-content: flex-start; }
   .mesa__ctrl { display: none; }
+  .mesa { padding-top: 80px; }
+  .c3d { --w: min(60vw, 250px); margin-top: 28px; }
+  .js .c3d { perspective: 1000px; height: calc(var(--w) * 1.33 + 60px); }
+  .js .c3d__cap { display: none; }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }

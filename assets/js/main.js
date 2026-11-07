@@ -111,9 +111,11 @@
   const N = cards.length;
   const STEP = 360 / N;
   let rot = 0, vel = 0, dragging = false, lastX = 0, R = 500, front = -1, visible = false, snapping = null;
+  const small = window.matchMedia("(max-width: 560px)");
   const layout = () => {
     const w = cards[0].getBoundingClientRect().width || 240;
-    R = Math.round((w / 2) / Math.tan(Math.PI / N) * 1.12);
+    // En móvil, más separación: la tarjeta central queda sola y las vecinas asoman por los lados
+    R = Math.round((w / 2) / Math.tan(Math.PI / N) * (small.matches ? 1.25 : 1.12));
     cards.forEach((c, i) => { c.style.transform = `rotateY(${i * STEP}deg) translateZ(${R}px)`; });
   };
   const render = () => {
@@ -122,7 +124,7 @@
     cards.forEach((c, i) => {
       let a = ((i * STEP + rot) % 360 + 540) % 360 - 180;
       const k = Math.cos(a * Math.PI / 180);
-      c.style.opacity = String(Math.max(0.08, 0.35 + 0.65 * k));
+      c.style.opacity = String(small.matches ? Math.max(0, 0.1 + 0.9 * Math.pow(Math.max(k, 0), 4)) : Math.max(0.08, 0.35 + 0.65 * k));
     });
     if (f !== front) {
       front = f;
