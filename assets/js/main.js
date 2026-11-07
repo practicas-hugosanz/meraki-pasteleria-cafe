@@ -5,7 +5,12 @@
   const $ = (s, c = document) => c.querySelector(s);
   const $$ = (s, c = document) => [...c.querySelectorAll(s)];
   const hasGsap = !!(window.gsap && window.ScrollTrigger);
-  if (hasGsap) gsap.registerPlugin(ScrollTrigger);
+  /* Al recargar, la web abre siempre arriba (salvo que el enlace lleve a una sección).
+     ScrollTrigger también recuerda el scroll: se le dice que no lo haga. */
+  if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+  if (hasGsap) { gsap.registerPlugin(ScrollTrigger); ScrollTrigger.clearScrollMemory("manual"); }
+  const toTop = () => { if (!location.hash) window.scrollTo({ top: 0, behavior: "instant" }); };
+  toTop();
 
   /* ---------- Contador del carrito de la tienda ---------- */
   try {
@@ -160,7 +165,8 @@
   const script = $(".hero__script");
   if (!reduce) {
     const tl = gsap.timeline({ defaults: { ease: "power4.out" } });
-    tl.from(".hero__panel", { yPercent: 18, opacity: 0, duration: 1.6, stagger: 0.12, ease: "expo.out" }, 0)
+    // La entrada mueve "y" (px) y el parallax de abajo mueve "yPercent": así no se pisan
+    tl.from(".hero__panel", { y: () => window.innerHeight * 0.18, opacity: 0, duration: 1.6, stagger: 0.12, ease: "expo.out" }, 0)
       .from(".hero__kicker", { y: 20, opacity: 0, duration: 1 }, 0.35)
       .fromTo(script, { clipPath: "inset(-30% 100% -30% -10%)" }, { clipPath: "inset(-30% -10% -30% -10%)", duration: 2.2, ease: "power2.inOut" }, 0.45)
       .from(".hero__lead", { y: 24, opacity: 0, duration: 1 }, 1.5)
@@ -169,11 +175,11 @@
 
     // Al bajar, los tres paneles se separan y el texto se va
     gsap.timeline({ scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: 0.6 } })
-      .to(".hp-a", { yPercent: -14, ease: "none" }, 0)
-      .to(".hp-c", { yPercent: -22, ease: "none" }, 0)
-      .to(".hp-b", { yPercent: 8, ease: "none" }, 0)
-      .to(".hero__content", { yPercent: 28, opacity: 0, ease: "none" }, 0)
-      .to(".hero__shade", { opacity: 1.4, ease: "none" }, 0);
+      .fromTo(".hp-a", { yPercent: 0 }, { yPercent: -14, ease: "none" }, 0)
+      .fromTo(".hp-c", { yPercent: 0 }, { yPercent: -22, ease: "none" }, 0)
+      .fromTo(".hp-b", { yPercent: 0 }, { yPercent: 8, ease: "none" }, 0)
+      .fromTo(".hero__content", { yPercent: 0, opacity: 1 }, { yPercent: 28, opacity: 0, ease: "none" }, 0)
+      .fromTo(".hero__shade", { opacity: 1 }, { opacity: 1.4, ease: "none" }, 0);
   }
 
   /* ---------- Nav sólida fuera del hero ---------- */
@@ -243,5 +249,5 @@
   /* ---------- Footer: el nombre sube desde abajo ---------- */
   gsap.from(".foot__word", { yPercent: 25, ease: "none", scrollTrigger: { trigger: ".foot", start: "top bottom", end: "bottom bottom", scrub: true } });
 
-  window.addEventListener("load", () => ScrollTrigger.refresh());
+  window.addEventListener("load", () => { toTop(); ScrollTrigger.refresh(); });
 })();
