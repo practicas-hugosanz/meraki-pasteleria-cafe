@@ -7,6 +7,14 @@
   const hasGsap = !!(window.gsap && window.ScrollTrigger);
   if (hasGsap) gsap.registerPlugin(ScrollTrigger);
 
+  /* ---------- Contador del carrito de la tienda ---------- */
+  try {
+    const cart = JSON.parse(localStorage.getItem("meraki-cart-v1") || "[]");
+    const n = cart.reduce((s, l) => s + (l.qty || 0), 0);
+    const badge = $("[data-cart-count]");
+    if (badge && n > 0) { badge.textContent = n; badge.hidden = false; }
+  } catch (err) { /* sin almacenamiento: sin contador */ }
+
   /* ---------- Vídeos del hero ---------- */
   const vids = $$(".hero__panel video");
   const loadVideos = () => {

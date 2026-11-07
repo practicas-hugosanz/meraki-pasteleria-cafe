@@ -62,7 +62,18 @@ html.menu-open .nav { color: var(--color-paper); background: transparent; box-sh
 .nav__pill { display: inline-flex; align-items: center; height: 44px; padding: 0 22px; border-radius: 999px; border: 1.5px solid currentColor; color: inherit; text-decoration: none; font-weight: 600; font-size: 0.95rem; transition: background-color 0.35s var(--ease-soft), color 0.35s var(--ease-soft); }
 .nav__pill:hover { background: var(--color-paper); color: var(--color-ink); }
 .nav.is-solid .nav__pill:hover { background: var(--color-ink); color: var(--color-paper); }
-html.menu-open .nav__pill { opacity: 0; pointer-events: none; }
+html.menu-open .nav__pill, html.menu-open .nav__link { opacity: 0; pointer-events: none; }
+.nav__link { display: inline-flex; align-items: center; height: 44px; padding: 0 14px; color: inherit; text-decoration: none; font-weight: 600; font-size: 0.95rem; background: linear-gradient(currentColor, currentColor) center calc(100% - 10px) / 0 1.5px no-repeat; transition: background-size 0.4s var(--ease-soft); }
+.nav__link:hover { background-size: calc(100% - 28px) 1.5px; }
+.nav__link[aria-current="page"] { background-size: calc(100% - 28px) 1.5px; }
+.nav__shop { gap: 8px; padding: 0 18px 0 16px; }
+.nav__shop svg { width: 19px; height: 19px; margin-top: -2px; }
+.nav__shop[aria-current="page"] { background: var(--color-frambuesa); border-color: var(--color-frambuesa); color: var(--color-paper); }
+.nav__count { display: inline-grid; place-items: center; min-width: 22px; height: 22px; padding: 0 6px; margin-right: -6px; border-radius: 999px; background: var(--color-frambuesa); color: var(--color-paper); font-size: 0.75rem; font-weight: 700; font-variant-numeric: tabular-nums; }
+.nav__count[hidden] { display: none; }
+.nav__shop[aria-current="page"] .nav__count { background: var(--color-paper); color: var(--color-frambuesa); }
+.nav__count.is-bump { animation: bump 0.5s var(--ease-soft); }
+@keyframes bump { 40% { transform: scale(1.35); } }
 .burger { display: inline-flex; align-items: center; gap: 12px; height: 44px; padding: 0 6px 0 16px; border: 0; background: none; color: inherit; font: 600 0.95rem/1 var(--font-body); cursor: pointer; }
 .burger__lines { position: relative; width: 44px; height: 44px; border-radius: 50%; background: var(--color-frambuesa); }
 .burger__lines i { position: absolute; left: 13px; right: 13px; height: 1.6px; background: var(--color-paper); border-radius: 2px; transition: transform 0.5s var(--ease-soft); }
@@ -91,6 +102,8 @@ html.menu-open .menu__nav a span { transform: none; }
 .menu__nav li:nth-child(5) a span { transition-delay: 0.45s; }
 .menu__nav li:nth-child(6) a span { transition-delay: 0.5s; }
 .menu__nav li:nth-child(7) a span { transition-delay: 0.55s; }
+.menu__shop { margin-top: 10px; }
+.menu__shop a { font-family: var(--font-outlier); font-size: clamp(3rem, 7.4vw, 6.4rem); line-height: 1; color: var(--color-rosapalo); }
 .menu__nav a:hover span { color: var(--color-rosapalo); transform: translateX(14px); transition-delay: 0s; }
 .menu__side { display: grid; gap: 30px; padding-bottom: 12px; opacity: 0; transform: translateY(20px); transition: opacity 0.6s, transform 0.8s var(--ease-soft); }
 html.menu-open .menu__side { opacity: 1; transform: none; transition-delay: 0.5s; }
@@ -118,8 +131,33 @@ html.menu-open .menu__side { opacity: 1; transform: none; transition-delay: 0.5s
 .hero__actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 34px; }
 .js:not(.is-ready) .hero__content > * { opacity: 0; }
 
+/* ---------- Qué es Meraki ---------- */
+.meraki { position: relative; overflow: hidden; background: var(--color-crema); padding-block: clamp(110px, 14vw, 200px); --ring: var(--color-frambuesa); }
+.meraki__in { position: relative; z-index: 1; display: grid; justify-items: center; text-align: center; }
+.meraki__def { display: flex; flex-wrap: wrap; justify-content: center; align-items: baseline; gap: 6px 18px; color: var(--color-ink-2); }
+.meraki__word { font-family: var(--font-outlier); font-size: clamp(3.4rem, 6vw, 5.4rem); line-height: 0.9; color: var(--color-frambuesa); padding-inline: 0.12em; }
+.meraki__ph { font: italic 400 1.1rem/1 var(--font-display); }
+.meraki__origin { font: 600 0.74rem/1 var(--font-body); letter-spacing: 0.24em; text-transform: uppercase; }
+.meraki__origin [lang] { font: italic 400 1.05rem/1 var(--font-display); letter-spacing: 0; text-transform: none; }
+.meraki__quote { margin-top: clamp(28px, 3vw, 44px); max-width: 22ch; font: 500 clamp(2rem, 4.4vw, 4.4rem)/1.1 var(--font-display); letter-spacing: -0.02em; text-wrap: balance; color: var(--color-ink); }
+.meraki__sign { margin-top: clamp(28px, 3vw, 40px); font: 400 clamp(1.1rem, 1.4vw, 1.35rem)/1.4 var(--font-display); font-style: italic; color: var(--color-ink-2); }
+.meraki__rings { left: 50%; top: 50%; width: min(120vw, 1100px); height: min(120vw, 1100px); translate: -50% -50%; opacity: 0.35; }
+
+/* ---------- Marquesina ---------- */
+.marquee { overflow: hidden; background: var(--color-frambuesa); color: var(--color-paper); padding-block: 22px; }
+.marquee__track { display: flex; align-items: center; gap: 28px; width: max-content; animation: marquee 38s linear infinite; }
+.marquee span { font: 500 clamp(1.4rem, 2.2vw, 2rem)/1 var(--font-display); white-space: nowrap; }
+.marquee i { flex: 0 0 auto; width: 14px; height: 14px; border-radius: 50%; border: 1.5px solid var(--color-rosapalo); }
+@keyframes marquee { to { transform: translateX(-50%); } }
+
 /* ---------- El local ---------- */
 .local { padding-block: var(--sec); background: var(--color-paper); }
+.pillars { list-style: none; margin: 40px 0 0; padding: 0; max-width: 560px; }
+.pillar { display: grid; grid-template-columns: 52px minmax(0, 1fr); gap: 16px; padding: 22px 0; border-top: 1px solid var(--color-rule); }
+.pillar:last-child { border-bottom: 1px solid var(--color-rule); }
+.pillar__n { font: 500 0.85rem/1 var(--font-body); color: var(--color-frambuesa); padding-top: 8px; }
+.pillar__t { font: 500 1.6rem/1.15 var(--font-display); letter-spacing: -0.01em; }
+.pillar p { margin-top: 8px; color: var(--color-ink-2); line-height: 1.6; }
 .local__grid { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: clamp(40px, 6vw, 100px); align-items: start; }
 .local__main, .local__side { margin: 0; }
 .local__main img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; border-radius: 28px; }
@@ -305,6 +343,7 @@ html.menu-open .menu__side { opacity: 1; transform: none; transition-delay: 0.5s
 .foot { position: relative; overflow: hidden; background: var(--color-cacao); color: var(--color-paper); padding-top: clamp(48px, 5vw, 80px); }
 .foot__in { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 20px 48px; padding-bottom: clamp(28px, 3vw, 44px); }
 .foot__word { margin: 0; font-family: var(--font-outlier); font-size: clamp(5rem, 12vw, 11rem); line-height: 0.95; padding: 0.08em 0.1em 0 0; white-space: nowrap; color: var(--color-rosapalo); pointer-events: none; }
+.foot__tag { margin-top: 2px; font: italic 400 1.1rem/1.3 var(--font-display); color: color-mix(in oklab, var(--color-paper) 80%, transparent); }
 .foot__links { display: flex; flex-wrap: wrap; gap: 12px 32px; padding-bottom: 0.9em; }
 .foot__links a { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; color: inherit; text-decoration: none; font-size: 1.05rem; background: linear-gradient(currentColor, currentColor) left calc(100% - 8px) / 0 1px no-repeat; transition: background-size 0.4s var(--ease-soft); }
 .foot__links a:hover { background-size: 100% 1px; }
@@ -322,7 +361,7 @@ html.menu-open .menu__side { opacity: 1; transform: none; transition-delay: 0.5s
   .panel__cols { column-count: 1; }
 }
 @media (max-width: 899px) {
-  .nav__pill { display: none; }
+  .nav__link { display: none; }
   .hero__media { grid-template-columns: minmax(0, 1fr); }
   .hp-a, .hp-c { display: none; }
   .hero__script { font-size: clamp(6.4rem, 34vw, 12rem); }
@@ -356,6 +395,13 @@ html.menu-open .menu__side { opacity: 1; transform: none; transition-delay: 0.5s
   .rec__try { display: none; }
   .burger__label { display: none; }
   .brand__name { font-size: 2.4rem; }
+  .nav__right { gap: 6px; }
+  .burger { padding-left: 0; }
+  .nav__shop { padding: 0 14px 0 12px; gap: 6px; font-size: 0.9rem; }
+}
+@media (max-width: 440px) {
+  /* En la portada el botón Tienda necesita el sitio: queda solo el disco del logo */
+  .nav__bar:has(.nav__shop:not([aria-current])) .brand__name { display: none; }
   .hero__kicker { letter-spacing: 0.28em; font-size: 0.72rem; }
   .tab { width: 100px; }
   .tab__disc { width: 76px; height: 76px; }
@@ -364,5 +410,5 @@ html.menu-open .menu__side { opacity: 1; transform: none; transition-delay: 0.5s
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .spin, .spin-slow, .menu__logo { animation: none; }
+  .spin, .spin-slow, .menu__logo, .marquee__track { animation: none; }
 }
