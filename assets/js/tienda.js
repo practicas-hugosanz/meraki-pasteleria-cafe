@@ -22,18 +22,18 @@
   /* Precios en céntimos. Los de "carta: true" son los de la carta del local.
      Los marcados con prov: true son PROVISIONALES y hay que confirmarlos con Meraki. */
   const PRODUCTS = [
-    { id: "cheesecake-pistacho", cat: "tartas", name: "Cheesecake de pistacho", desc: "Entera, cremosa y con crema de pistacho por encima. La más pedida.", price: 3800, unit: "entera · 8–10 raciones", img: "assets/img/cheesecake-pistacho.webp", lead: 2, tag: "Por encargo · 48 h", prov: true },
-    { id: "cheesecake-maracuya", cat: "tartas", name: "Cheesecake de maracuyá", desc: "Entera, con el punto ácido del maracuyá sobre la base de galleta.", price: 3600, unit: "entera · 8–10 raciones", img: "assets/img/cheesecake-maracuya.webp", lead: 2, tag: "Por encargo · 48 h", prov: true },
-    { id: "crumble-manzana", cat: "tartas", name: "Crumble de manzana", desc: "Entera. Al estilo de la tarta de manzana holandesa, con su crujiente por encima.", price: 3200, unit: "entera · 8 raciones", img: "assets/img/v-crumble.webp", pos: "50% 50%", lead: 2, tag: "Por encargo · 48 h", prov: true },
-    { id: "alfajor-maicena", cat: "dulces", name: "Alfajor de maicena", desc: "Relleno de dulce de leche y rebozado en coco, como en Argentina.", price: 160, unit: "la unidad", img: "assets/img/v-alfajores.webp", lead: 1, carta: true },
-    { id: "cookie-pistacho", cat: "dulces", name: "Cookie de pistacho", desc: "Gruesa, tierna por dentro y con corazón de pistacho.", price: 230, unit: "la unidad", img: "assets/img/v-pistacho.webp", lead: 1, carta: true },
-    { id: "cookie-nutella", cat: "dulces", name: "Cookie de Nutella", desc: "De las que se rompen y dejan ver el relleno.", price: 230, unit: "la unidad", img: "assets/img/v-nutella.webp", lead: 1, carta: true },
-    { id: "cookie-redvelvet", cat: "dulces", name: "Cookie red velvet", desc: "Roja, suave y con crema.", price: 230, unit: "la unidad", img: "assets/img/v-redvelvet.webp", lead: 1, carta: true },
-    { id: "croissant-mini", cat: "bolleria", name: "Croissant mini relleno", desc: "100% mantequilla, relleno al momento.", price: 130, unit: "la unidad", img: "assets/img/v-croissants.webp", lead: 1, carta: true, variants: ["Pistacho", "Nutella"] },
-    { id: "hojaldre-manzana", cat: "bolleria", name: "Hojaldre de manzana", desc: "La manzana en forma de rosa, con reducción de pera y azúcar glas.", price: 260, unit: "la unidad", img: "assets/img/v-rosas.webp", pos: "50% 80%", lead: 1, carta: true },
-    { id: "empanada", cat: "salado", name: "Empanada argentina", desc: "100% casera, horneada en el día. Elige el relleno.", price: 280, unit: "la unidad", img: "assets/img/v-empanadas.webp", lead: 1, prov: true, variants: ["Ternera", "Pollo", "Humita", "Espinacas y mozzarella", "Rulo de cabra, pera y cebolla"] },
-    { id: "caja-alfajores", cat: "regalo", name: "Caja de 6 alfajores", desc: "Seis alfajores de maicena con dulce de leche y coco, listos para regalar.", price: 960, unit: "caja de 6", img: "assets/img/alfajores.webp", lead: 1, tag: "Para regalar" },
-    { id: "caja-cookies", cat: "regalo", name: "Caja de 4 cookies", desc: "Pistacho, Nutella, red velvet y la cookie del día.", price: 920, unit: "caja de 4", img: "assets/img/v-nutella.webp", pos: "50% 60%", lead: 1, tag: "Para regalar" },
+    { id: "cheesecake-pistacho", cat: "tartas", name: "Cheesecake de pistacho", desc: "Cheesecake entera con crema de pistacho y pistacho troceado por encima.", price: 3800, unit: "entera · 8–10 raciones", img: "assets/img/cheesecake-pistacho.webp", lead: 2, tag: "Por encargo · 48 h", prov: true },
+    { id: "cheesecake-maracuya", cat: "tartas", name: "Cheesecake de maracuyá", desc: "Cheesecake entera con cobertura de maracuyá sobre base de galleta.", price: 3600, unit: "entera · 8–10 raciones", img: "assets/img/cheesecake-maracuya.webp", lead: 2, tag: "Por encargo · 48 h", prov: true },
+    { id: "crumble-manzana", cat: "tartas", name: "Crumble de manzana", desc: "Tarta de manzana entera, al estilo holandés, con cobertura de crumble.", price: 3200, unit: "entera · 8 raciones", img: "assets/img/v-crumble.webp", pos: "50% 50%", lead: 2, tag: "Por encargo · 48 h", prov: true },
+    { id: "alfajor-maicena", cat: "dulces", name: "Alfajor de maicena", desc: "Alfajor argentino de maicena relleno de dulce de leche y rebozado en coco.", price: 160, unit: "la unidad", img: "assets/img/v-alfajores.webp", lead: 1, carta: true },
+    { id: "cookie-pistacho", cat: "dulces", name: "Cookie de pistacho", desc: "", price: 230, unit: "la unidad", img: "assets/img/v-pistacho.webp", lead: 1, carta: true },
+    { id: "cookie-nutella", cat: "dulces", name: "Cookie de Nutella", desc: "", price: 230, unit: "la unidad", img: "assets/img/v-nutella.webp", lead: 1, carta: true },
+    { id: "cookie-redvelvet", cat: "dulces", name: "Cookie red velvet", desc: "Cookie red velvet con crema.", price: 230, unit: "la unidad", img: "assets/img/v-redvelvet.webp", lead: 1, carta: true },
+    { id: "croissant-mini", cat: "bolleria", name: "Croissant mini relleno", desc: "Croissant mini 100% mantequilla, relleno de pistacho o Nutella.", price: 130, unit: "la unidad", img: "assets/img/v-croissants.webp", lead: 1, carta: true, variants: ["Pistacho", "Nutella"] },
+    { id: "hojaldre-manzana", cat: "bolleria", name: "Hojaldre de manzana", desc: "Hojaldre con manzana laminada en forma de rosa y reducción de pera.", price: 260, unit: "la unidad", img: "assets/img/v-rosas.webp", pos: "50% 80%", lead: 1, carta: true },
+    { id: "empanada", cat: "salado", name: "Empanada argentina", desc: "Empanada argentina casera. Rellenos: ternera, pollo, humita, espinacas y mozzarella o rulo de cabra.", price: 280, unit: "la unidad", img: "assets/img/v-empanadas.webp", lead: 1, prov: true, variants: ["Ternera", "Pollo", "Humita", "Espinacas y mozzarella", "Rulo de cabra, pera y cebolla"] },
+    { id: "caja-alfajores", cat: "regalo", name: "Caja de 6 alfajores", desc: "Seis alfajores de maicena con dulce de leche y coco, en caja.", price: 960, unit: "caja de 6", img: "assets/img/alfajores.webp", lead: 1, tag: "Para regalar" },
+    { id: "caja-cookies", cat: "regalo", name: "Caja de 4 cookies", desc: "Cookie de pistacho, de Nutella, red velvet y la cookie del día, en caja.", price: 920, unit: "caja de 4", img: "assets/img/v-nutella.webp", pos: "50% 60%", lead: 1, tag: "Para regalar" },
   ];
 
   const KEY = "meraki-cart-v1";
@@ -89,7 +89,7 @@
             <h3 class="prod__name">${esc(p.name)}</h3>
             <p class="prod__price">${eur(p.price)}<span class="prod__unit">${esc(p.unit)}</span></p>
           </div>
-          <p class="prod__desc">${esc(p.desc)}</p>
+          ${p.desc ? `<p class="prod__desc">${esc(p.desc)}</p>` : ""}
           ${p.variants ? `<div class="prod__opt"><label for="v-${p.id}">${p.cat === "salado" ? "Relleno" : "Sabor"}</label><select id="v-${p.id}" data-variant>${p.variants.map((v) => `<option>${esc(v)}</option>`).join("")}</select></div>` : ""}
           <div class="prod__act"><button class="add" type="button" data-add="${p.id}"><svg aria-hidden="true"><use href="#bag"/></svg><span>Añadir al pedido</span></button></div>
         </div>
@@ -152,8 +152,8 @@
       </li>`;
     }).join("");
     $("[data-lead-note]").textContent = n && leadDays() > 1
-      ? "Llevas una tarta entera: la tendremos lista a partir de pasado mañana."
-      : n ? "Lo tendrás listo a partir de mañana." : "";
+      ? "Las tartas enteras necesitan 48 horas: recogida a partir de pasado mañana."
+      : n ? "Recogida a partir de mañana." : "";
     if (n > 0) { mbar.hidden = false; requestAnimationFrame(() => mbar.classList.add("is-on")); }
     else mbar.classList.remove("is-on");
     if (n === 0 && !$("[data-step=checkout]").hidden) showStep("list");

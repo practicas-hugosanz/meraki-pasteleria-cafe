@@ -26,7 +26,6 @@ html.menu-open .bagbtn { opacity: 0; pointer-events: none; }
 .shero__a { left: 0; top: 0; width: 74%; }
 .shero__b { right: 0; bottom: 0; width: 48%; box-shadow: 0 0 0 8px var(--color-crema), var(--shadow-soft) !important; }
 .shero__pic .rings { left: -6%; top: -6%; width: 86%; height: 86%; }
-.shero__stamp { position: absolute; left: -2%; bottom: 4%; display: grid; place-items: center; width: 116px; aspect-ratio: 1; border-radius: 50%; background: var(--color-cacao); color: var(--color-paper); font: 400 1.7rem/0.82 var(--font-outlier); text-align: center; padding-top: 10px; transform: rotate(-12deg); }
 
 /* ---------- Catálogo ---------- */
 .catalogo { padding-block: clamp(70px, 8vw, 120px) var(--sec); }
@@ -180,7 +179,6 @@ html.cart-open { overflow: hidden; }
 }
 @media (max-width: 560px) {
   .shero { padding-top: 110px; }
-  .shero__stamp { width: 92px; font-size: 1.35rem; }
   .steps li { font-size: 0.88rem; }
   .field__row { grid-template-columns: minmax(0, 1fr); }
   .chips { flex-wrap: nowrap; overflow-x: auto; margin-inline: calc(var(--pad) * -1); padding-inline: var(--pad); scrollbar-width: none; width: calc(100% + var(--pad) * 2); }
